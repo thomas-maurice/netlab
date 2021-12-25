@@ -43,7 +43,7 @@ func DHCPUp(log *logrus.Entry, cfg *Config) error {
 	for _, p := range processesList {
 		cmdLine, err := p.CmdlineSlice()
 		if err != nil {
-			log.WithError(err).Error("could not introspect process %d to extract its command line", p.Pid)
+			log.WithError(err).Errorf("could not introspect process %d to extract its command line", p.Pid)
 			return err
 		}
 
@@ -115,7 +115,7 @@ func DHCPUp(log *logrus.Entry, cfg *Config) error {
 		case err := <-waitChan:
 			if err != nil {
 				if err != nil {
-					log.WithError(err).Error("could not run dhclient on interface %s", ifaceName)
+					log.WithError(err).Errorf("could not run dhclient on interface %s", ifaceName)
 					return err
 				}
 			}

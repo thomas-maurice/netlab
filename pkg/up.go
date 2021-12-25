@@ -117,7 +117,7 @@ func Up(log *logrus.Entry, cfg *Config) error {
 
 		if veth.Master == "" {
 			if link.Attrs().MasterIndex != 0 {
-				log.Info("removing master on %s", names[1])
+				log.Infof("removing master on %s", names[1])
 				err = netlink.LinkSetNoMaster(link)
 				if err != nil {
 					logrus.WithError(err).Errorf("could not remove the master from %s", names[1])
@@ -174,7 +174,7 @@ func Up(log *logrus.Entry, cfg *Config) error {
 					},
 				})
 				if err != nil {
-					log.WithError(err).Error("could not create vlan interface %s", vlanName)
+					log.WithError(err).Errorf("could not create vlan interface %s", vlanName)
 					return fmt.Errorf("could not create vlan interface %s, %w", vlanName, err)
 				}
 			}

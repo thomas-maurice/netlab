@@ -46,7 +46,7 @@ func DHCPDown(log *logrus.Entry, cfg *Config) error {
 	for _, p := range processesList {
 		cmdLine, err := p.CmdlineSlice()
 		if err != nil {
-			log.WithError(err).Error("could not introspect process %d to extract its command line", p.Pid)
+			log.WithError(err).Errorf("could not introspect process %d to extract its command line", p.Pid)
 			return err
 		}
 
