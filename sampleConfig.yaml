@@ -1,0 +1,25 @@
+bridges:
+  sw-r0-eth0:
+  sw-r0-eth1:
+  sw-r0-eth2:
+  sw-r0-eth3:
+  sw-r0-eth4:
+  sw-r0-eth5:
+veths:
+  net1:
+    dhcp: true
+    master: sw-r0-eth5
+  net0:
+    dhcp: true
+    master: sw-r0-eth1
+    vlans:
+      11:
+          dhcp: true
+      12:
+          dhcp: false
+      13:
+          dhcp: true
+      14:
+          dhcp: false
+      16:
+          dhcp: false
